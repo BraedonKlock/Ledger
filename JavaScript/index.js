@@ -1,0 +1,88 @@
+function saveBillToStorage() {
+    const name = document.getElementById("billName").value.trim();
+    const amount = document.getElementById("number").value.trim();
+
+    if (!name || !amount) {
+        alert("Please enter both a bill name and amount.");
+        return;
+    }
+
+    const bill = {
+        name: name,
+        amount: parseFloat(amount),
+        checked: false // ✅ added checkbox state
+    };
+
+    let bills = JSON.parse(localStorage.getItem("bills")) || [];
+    bills.push(bill);
+    localStorage.setItem("bills", JSON.stringify(bills));
+
+    document.getElementById("billName").value = "";
+    document.getElementById("number").value = "";
+
+    alert("Bill added!");
+}
+
+function loadBillsFromStorage() {
+    const billsSection = document.getElementById("billsCheckbox");
+    const bills = JSON.parse(localStorage.getItem("bills")) || [];
+    billsSection.innerHTML = "";
+
+    for (let i = 0; i < bills.length; i++) {
+        const bill = bills[i];
+
+        const div = document.createElement("div");
+        div.setAttribute("class", "bills");
+
+        const nameP = document.createElement("p");
+        nameP.textContent = bill.name;
+
+        const amountP = document.createElement("p");
+        amountP.textContent = "$" + bill.amount.toFixed(2);
+
+        const checkbox = document.createElement("input");
+        checkbox.setAttribute("type", "checkbox");
+        checkbox.setAttribute("name", "paid");
+        checkbox.setAttribute("value", "yes");
+        checkbox.checked = bill.checked; // ✅ restore checked state
+
+        // ✅ update localStorage on change
+        checkbox.addEventListener("change", function () {
+            updateCheckbox(i, this.checked);
+        });
+
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "Remove";
+        removeBtn.addEventListener("click", function () {
+            removeBill(i);
+        });
+
+        div.appendChild(nameP);
+        div.appendChild(amountP);
+        div.appendChild(checkbox);
+        div.appendChild(removeBtn);
+
+        billsSection.appendChild(div);
+    }
+}
+
+function updateCheckbox(index, checked) {
+    let bills = JSON.parse(localStorage.getItem("bills")) || [];
+    if (index >= 0 && index < bills.length) {
+        bills[index].checked = checked; // ✅ update checkbox state
+        localStorage.setItem("bills", JSON.stringify(bills));
+    }
+}
+
+function removeBill(index) {
+    let bills = JSON.parse(localStorage.getItem("bills")) || [];
+    if (index >= 0 && index < bills.length) {
+        bills.splice(index, 1);
+        localStorage.setItem("bills", JSON.stringify(bills));
+        loadBillsFromStorage();
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    loadBillsFromStorage();
+});

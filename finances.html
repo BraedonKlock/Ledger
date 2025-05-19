@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/finances.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div id="logoContainer"><img id="logo" src="photos/logo.png"></div>
+        <div id="pageName"><h1>Finances</h1></div>
+    </header><hr>
+
+    <nav><a href="index.html">Bills</a></nav>
+
+    <main>
+        <section class="finances" id="expenseInputs">
+            <div class="billInputs">
+                <h1 class="billsh1">Bill</h1>
+                <input type="text" id="billName" placeholder="Enter bill name">
+                <input type="number" id="number" placeholder="Enter amount">
+                <button onclick="saveBillToStorage()">Add bill</button>
+            </div>
+        </section>
+        <section class="finances" id="gasInputs">
+            <div  class="billInputs">
+                <h1 class="billsh1">Gas</h1>
+                <input type="text" id="week" placeholder="Enter week number">
+                <input type="number" id="number" placeholder="Enter alloted amount">
+                <button onclick="">Add Week</button>
+            </div>
+        </section>
+    </main>
+<script src="JavaScript/index.js"></script>
+</body>
+</html>
