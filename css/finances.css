@@ -22,12 +22,12 @@
         align-items: center;
         background-color: rgb(240,239,236);
         width: 100%;
-        border-left: .1vw solid black;
+        border-left: .3vw solid black;
         font-family: 'anton';
     }
     hr {
         margin: 0;
-        border: .1vw solid black;
+        border: .3vw solid black;
     }
     nav {
         display: flex;
@@ -36,8 +36,8 @@
         width: 28.55%;
         height: 8vw;
         background-color: rgb(240,239,236);
-        border-right: .1vw solid black;
-        border-bottom: .1vw solid black;
+        border-right: .3vw solid black;
+        border-bottom: .3vw solid black;
     }
     a {
         color: black;
@@ -57,7 +57,11 @@
         justify-content: center;
         align-items: center;
         background-color: rgb(209, 213, 219);
-        border: .2vw solid rgb(30, 58, 138);
+        border: .3vw solid rgb(30, 58, 138);
+    }
+    .billsh1 {
+        margin: 2vw 0 2vw 0;
+        font-family: 'anton';
     }
     .billInputs {
         display: flex;
@@ -67,18 +71,15 @@
         background-color: rgb(209, 213, 219);
         width: 95%;
     }
-    .billsh1 {
-        margin: 2vw 0 2vw 0;
-        font-family: 'anton';
-    }
     input {
         text-align: center;
-        width: 90%;
+        width: 75%;
         margin: 2vw 0 2vw 0;
         border: .3vw solid black;
     }
     button {
         margin: 2vw 0 2vw 0;
         border: .3vw solid black;
+        width: 50%;
     }
 }

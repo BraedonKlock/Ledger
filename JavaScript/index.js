@@ -86,3 +86,108 @@ function removeBill(index) {
 document.addEventListener("DOMContentLoaded", function () {
     loadBillsFromStorage();
 });
+
+
+
+
+
+
+function handleAddWeek() {
+    let weekInput = document.getElementById("gasWeek").value.trim();
+    let amountInput = document.getElementById("gasAmount").value.trim();
+
+    let weekNumber = parseInt(weekInput);
+    let amount = parseFloat(amountInput);
+
+    if (!weekInput || !amountInput) {
+        alert("Please enter both week number and amount.");
+        return;
+    }
+
+    if (isNaN(weekNumber) || isNaN(amount)) {
+        alert("Please enter valid numbers.");
+        return;
+    }
+
+    // Load existing entries or initialize array
+    let gasEntries = JSON.parse(localStorage.getItem("gasEntries")) || [];
+
+    // Add the new entry
+    gasEntries.push({ week: weekNumber, amount: amount });
+
+    // Save back to localStorage
+    localStorage.setItem("gasEntries", JSON.stringify(gasEntries));
+
+    // Go to the page that will show all the weeks
+    window.location.href = "index.html";
+}
+
+
+function createGasEntry(weekNumber, amount) {
+    let gasSection = document.getElementById("gas");
+
+    let container = document.createElement("div");
+    container.setAttribute("class", "gasContainer");
+
+    let weekP = document.createElement("p");
+    weekP.textContent = "Week " + weekNumber;
+
+    let amountP = document.createElement("p");
+    amountP.textContent = amount.toFixed(2);
+
+    let input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Enter amount to subtract";
+
+    let submitBtn = document.createElement("button");
+    submitBtn.textContent = "Submit";
+
+    let removeBtn = document.createElement("button");
+    removeBtn.textContent = "Remove";
+
+    function subtractAmount() {
+        let inputValue = parseFloat(input.value);
+        let currentAmount = parseFloat(amountP.textContent);
+
+        if (!isNaN(inputValue)) {
+            let newAmount = currentAmount - inputValue;
+            amountP.textContent = newAmount.toFixed(2);
+            input.value = "";
+        } else {
+            alert("Please enter a valid number.");
+        }
+    }
+
+    submitBtn.addEventListener("click", subtractAmount);
+    input.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") subtractAmount();
+    });
+
+    removeBtn.addEventListener("click", function () {
+        gasSection.removeChild(container);
+    });
+
+    container.appendChild(weekP);
+    container.appendChild(amountP);
+    container.appendChild(input);
+    container.appendChild(submitBtn);
+    container.appendChild(removeBtn);
+
+    gasSection.appendChild(container);
+}
+
+window.onload = function () {
+    let gasSection = document.getElementById("gas");
+
+    let gasEntries = JSON.parse(localStorage.getItem("gasEntries")) || [];
+
+    if (gasEntries.length === 0) {
+        gasSection.textContent = "No gas data found.";
+        return;
+    }
+
+    gasEntries.forEach(function(entry) {
+        createGasEntry(entry.week, parseFloat(entry.amount));
+    });
+
+};
