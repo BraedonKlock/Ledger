@@ -145,18 +145,27 @@ function createGasEntry(weekNumber, amount) {
     let removeBtn = document.createElement("button");
     removeBtn.textContent = "Remove";
 
-    function subtractAmount() {
-        let inputValue = parseFloat(input.value);
-        let currentAmount = parseFloat(amountP.textContent);
+function subtractAmount() {
+    let inputValue = parseFloat(input.value);
+    let currentAmount = parseFloat(amountP.textContent);
 
-        if (!isNaN(inputValue)) {
-            let newAmount = currentAmount - inputValue;
-            amountP.textContent = newAmount.toFixed(2);
-            input.value = "";
-        } else {
-            alert("Please enter a valid number.");
+    if (!isNaN(inputValue)) {
+        let newAmount = currentAmount - inputValue;
+        amountP.textContent = newAmount.toFixed(2);
+        input.value = "";
+
+        // 🔥 Update localStorage
+        let gasEntries = JSON.parse(localStorage.getItem("gasEntries")) || [];
+        let entryIndex = gasEntries.findIndex(entry => entry.week === weekNumber);
+
+        if (entryIndex !== -1) {
+            gasEntries[entryIndex].amount = newAmount;
+            localStorage.setItem("gasEntries", JSON.stringify(gasEntries));
         }
+    } else {
+        alert("Please enter a valid number.");
     }
+}
 
     submitBtn.addEventListener("click", subtractAmount);
     input.addEventListener("keydown", function (event) {
