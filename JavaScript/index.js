@@ -111,9 +111,6 @@ function handleAddWeek() {
 
     // Save back to localStorage
     localStorage.setItem("gasEntries", JSON.stringify(gasEntries));
-
-    // Go to the page that will show all the weeks
-    window.location.href = "index.html";
 }
 
 function createGasEntry(weekNumber, amount) {
@@ -166,8 +163,15 @@ function subtractAmount() {
     });
 
     removeBtn.addEventListener("click", function () {
+        // Remove from DOM
         gasSection.removeChild(container);
+
+        // Remove from localStorage
+        let gasEntries = JSON.parse(localStorage.getItem("gasEntries")) || [];
+        gasEntries = gasEntries.filter(entry => entry.week !== weekNumber);
+        localStorage.setItem("gasEntries", JSON.stringify(gasEntries));
     });
+
 
     container.appendChild(weekP);
     container.appendChild(amountP);
