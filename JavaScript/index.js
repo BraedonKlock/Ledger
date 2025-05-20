@@ -191,3 +191,41 @@ window.onload = function () {
         createGasEntry(entry.week, parseFloat(entry.amount));
     });
 };
+
+ const totalDisplay = document.getElementById("mcTotal");
+        const inputField = document.getElementById("mcInput");
+        const addBtn = document.getElementById("mcAdd");
+        const subtractBtn = document.getElementById("mcSubtract");
+        // Load from localStorage or set to 0 if not found
+        let currentTotal = parseFloat(localStorage.getItem("mcTotal")) || 0;
+        updateDisplay();
+
+        addBtn.onclick = function () {
+            let input = parseFloat(inputField.value);
+            if (isNaN(input)) {
+                alert("Please enter a valid number.");
+                return;
+            }
+            currentTotal += input;
+            saveAndUpdate();
+        };
+
+        subtractBtn.onclick = function () {
+            let input = parseFloat(inputField.value);
+            if (isNaN(input)) {
+                alert("Please enter a valid number.");
+                return;
+            }
+            currentTotal -= input;
+            saveAndUpdate();
+        };
+
+        function saveAndUpdate() {
+            localStorage.setItem("mcTotal", currentTotal.toFixed(2));
+            updateDisplay();
+            inputField.value = "";
+        }
+
+        function updateDisplay() {
+            totalDisplay.textContent = "$" + currentTotal.toFixed(2);
+        }

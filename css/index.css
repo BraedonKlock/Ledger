@@ -51,6 +51,15 @@
         background-color: rgb(240,239,236);
         width: 100%;
     }
+    #billsCheckbox {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(3,100%);
+        gap: 2vw;
+        width: 31%;
+        background-color: rgb(240,239,236);
+        margin: 5vw 0 0 0;
+    }
     .bills {
         display: flex;
         flex-direction: column;
@@ -63,20 +72,10 @@
         font-family: 'anton';
         font-size: 4vw;
     }
-    #billsCheckbox {
-        display: grid;
-        justify-content: center;
-        grid-template-columns: repeat(3,100%);
-        gap: 2vw;
-        width: 31%;
-        background-color: rgb(240,239,236);
-        margin: 2vw 0 2vw 0;
-    }
     p, input {
         margin: 3vw 0 3vw 0;
         text-align: center;
     }
-}
     button {
         margin: 3vw 0 3vw 0;
         border: .3vw solid black;
@@ -113,3 +112,21 @@
     main #gas button {
         width: 75%;
     }
+    #mc {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        width: 50%;
+        border: .3vw solid rgb(30, 58, 138);
+        background-color: rgb(209, 213, 219);
+    }
+    #mc button {
+        width: 75%;
+    }
+    #mc input {
+        width: 50%;
+
+    }
+}
