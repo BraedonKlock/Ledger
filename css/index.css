@@ -6,6 +6,7 @@
         display: flex;
         width: 100%;
         background-color: rgb(240,239,236);
+        box-shadow: 2vw 4vw 10vw rgba(0, 0, 0, 0.3);
     }
     #logoContainer {
         display: flex;
@@ -25,6 +26,9 @@
         border-left: .1vw solid black;
         font-family: 'anton';
     }
+    #pageName h1 {
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    }
     hr {
         margin: 0;
         border: .3vw solid black;
@@ -35,6 +39,7 @@
         align-items: center;
         width: 28.55%;
         height: 8vw;
+        box-shadow: 2vw 4vw 10vw rgba(0, 0, 0, 0.3);
         background-color: rgb(240,239,236);
         border-right: .3vw solid black;
         border-bottom: .3vw solid black;
@@ -48,8 +53,9 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: rgb(240,239,236);
+        background-color: (240,239,236);
         width: 100%;
+        margin-top: 15vw;
     }
     #billsCheckbox {
         display: grid;
@@ -57,14 +63,15 @@
         grid-template-columns: repeat(3,100%);
         gap: 2vw;
         width: 31%;
-        background-color: rgb(240,239,236);
-        margin: 5vw 0 0 0;
+        background-color: (240,239,236);
+        margin: 0vw 0 7vw 0;
     }
     .bills {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        box-shadow: 2vw 4vw 10vw rgba(0, 0, 0, 0.4);
         width: 95%;
         border: .3vw solid rgb(30, 58, 138);
         border-radius: 1vw;
@@ -86,22 +93,26 @@
         justify-content: center;
         grid-template-columns: repeat(2, 47%);
         background-color: rgb(240,239,236);
+        margin: 5vw 0 10vw 0;
     }
     .gasContainer {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        box-shadow: 2vw 4vw 10vw rgba(0, 0, 0, 0.4);
         border: .3vw solid rgb(30, 58, 138);
         background-color: rgb(209, 213, 219);
         width: 100%;
     }
     main h1 {
         margin: 5vw 0 0 0;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
     }
     main hr {
         margin: 3vw 0 5vw;
         width: 60vw;
+ box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
     }
     main #gas p {
         text-align: center;
@@ -117,10 +128,13 @@
         justify-content: center;
         flex-direction: column;
         align-items: center;
+        box-shadow: 2vw 4vw 10vw rgba(0, 0, 0, 0.4);
         gap: 0;
         width: 50%;
         border: .3vw solid rgb(30, 58, 138);
         background-color: rgb(209, 213, 219);
+        margin-top: 5vw;
+
     }
     #mc button {
         width: 75%;
