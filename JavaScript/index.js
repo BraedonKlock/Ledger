@@ -10,7 +10,7 @@ function saveBillToStorage() {
     const bill = {
         name: name,
         amount: parseFloat(amount),
-        checked: false // ✅ added checkbox state
+        checked: false 
     };
 
     let bills = JSON.parse(localStorage.getItem("bills")) || [];
@@ -44,9 +44,8 @@ function loadBillsFromStorage() {
         checkbox.setAttribute("type", "checkbox");
         checkbox.setAttribute("name", "paid");
         checkbox.setAttribute("value", "yes");
-        checkbox.checked = bill.checked; // ✅ restore checked state
+        checkbox.checked = bill.checked;
 
-        // ✅ update localStorage on change
         checkbox.addEventListener("change", function () {
             updateCheckbox(i, this.checked);
         });
@@ -69,7 +68,7 @@ function loadBillsFromStorage() {
 function updateCheckbox(index, checked) {
     let bills = JSON.parse(localStorage.getItem("bills")) || [];
     if (index >= 0 && index < bills.length) {
-        bills[index].checked = checked; // ✅ update checkbox state
+        bills[index].checked = checked; 
         localStorage.setItem("bills", JSON.stringify(bills));
     }
 }
@@ -154,7 +153,7 @@ function subtractAmount() {
         amountP.textContent = newAmount.toFixed(2);
         input.value = "";
 
-        // 🔥 Update localStorage
+        // Update localStorage
         let gasEntries = JSON.parse(localStorage.getItem("gasEntries")) || [];
         let entryIndex = gasEntries.findIndex(entry => entry.week === weekNumber);
 
@@ -191,12 +190,10 @@ window.onload = function () {
     let gasEntries = JSON.parse(localStorage.getItem("gasEntries")) || [];
 
     if (gasEntries.length === 0) {
-        gasSection.textContent = "No gas data found.";
         return;
     }
 
     gasEntries.forEach(function(entry) {
         createGasEntry(entry.week, parseFloat(entry.amount));
     });
-
 };
