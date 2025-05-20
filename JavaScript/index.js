@@ -111,6 +111,10 @@ function handleAddWeek() {
 
     // Save back to localStorage
     localStorage.setItem("gasEntries", JSON.stringify(gasEntries));
+
+    document.getElementById("gasWeek").value = "";
+    document.getElementById("gasAmount").value = "";
+    alert("Bill added!");
 }
 
 function createGasEntry(weekNumber, amount) {
@@ -134,7 +138,7 @@ function createGasEntry(weekNumber, amount) {
 
     let removeBtn = document.createElement("button");
     removeBtn.textContent = "Remove";
-
+    
 function subtractAmount() {
     let inputValue = parseFloat(input.value);
     let currentAmount = parseFloat(amountP.textContent);
@@ -178,9 +182,8 @@ function subtractAmount() {
     container.appendChild(input);
     container.appendChild(submitBtn);
     container.appendChild(removeBtn);
-
     gasSection.appendChild(container);
-}
+};
 
 window.onload = function () {
     let gasSection = document.getElementById("gas");
@@ -188,7 +191,7 @@ window.onload = function () {
     let gasEntries = JSON.parse(localStorage.getItem("gasEntries")) || [];
 
     if (gasEntries.length === 0) {
-        return;
+        return
     }
 
     gasEntries.forEach(function(entry) {
