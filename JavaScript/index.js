@@ -86,11 +86,6 @@ document.addEventListener("DOMContentLoaded", function () {
     loadBillsFromStorage();
 });
 
-
-
-
-
-
 function handleAddWeek() {
     let weekInput = document.getElementById("gasWeek").value.trim();
     let amountInput = document.getElementById("gasAmount").value.trim();
@@ -121,7 +116,6 @@ function handleAddWeek() {
     window.location.href = "index.html";
 }
 
-
 function createGasEntry(weekNumber, amount) {
     let gasSection = document.getElementById("gas");
 
@@ -136,7 +130,7 @@ function createGasEntry(weekNumber, amount) {
 
     let input = document.createElement("input");
     input.type = "text";
-    input.placeholder = "Enter amount to subtract";
+    input.placeholder = "Enter amount";
 
     let submitBtn = document.createElement("button");
     submitBtn.textContent = "Submit";
