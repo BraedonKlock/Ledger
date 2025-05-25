@@ -1,4 +1,4 @@
-Ledger is a web program i use to keep track of bills, their amount and if they're paid.
+Ledger is a web program styled for mobile devices only that i use to keep track of bills, their amount and if they're paid.
 
 On Finances.html i can enter a bill name and the amount of that bill. i can also enter a week number (1-4) and the allotted amount for gas and the program will save those two things to local storage.
 
